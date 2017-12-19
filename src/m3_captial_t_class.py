@@ -134,6 +134,15 @@ class CapitalT(object):
           :type height:   int
           :type letter_thickness:   int
         """
+        self.intersect = intersection_center
+        h_rect = rg.Rectangle(rg.Point(self.intersect.x - (0.5*width),
+                                       self.intersect.y - (0.5*letter_thickness)),
+                              rg.Point(self.intersect.x + (0.5*width),
+                                       self.intersect.y + (0.5*letter_thickness)))
+        v_rect = rg.Rectangle(rg.Point(self.intersect.x - (0.5*letter_thickness),
+                                       self.intersect.y - (0.5*letter_thickness)),
+                              rg.Point(self.intersect.x + (0.5*letter_thickness),
+                                       self.intersect.y + (height-0.5*letter_thickness)))
         # --------------------------------------------------------------
         # TODO: 3.
         #   READ the above specification, including the Example.
@@ -159,6 +168,7 @@ class CapitalT(object):
         Type hints:
           :type window: rg.RoseWindow
         """
+        
         # --------------------------------------------------------------
         # TODO: 4.
         #   READ the above specification, including the Example.
