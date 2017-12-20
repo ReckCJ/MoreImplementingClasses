@@ -135,16 +135,20 @@ class CapitalT(object):
           :type letter_thickness:   int
         """
         self.intersect = intersection_center
-        h_rect = rg.Rectangle(rg.Point(self.intersect.x - (0.5*width),
+        self.width = width
+        self.height = height
+        self.letter_thickness = letter_thickness
+        self.h_rect = rg.Rectangle(rg.Point(self.intersect.x - (0.5*width),
                                        self.intersect.y - (0.5*letter_thickness)),
                               rg.Point(self.intersect.x + (0.5*width),
                                        self.intersect.y + (0.5*letter_thickness)))
-        v_rect = rg.Rectangle(rg.Point(self.intersect.x - (0.5*letter_thickness),
+        self.v_rect = rg.Rectangle(rg.Point(self.intersect.x - (
+            0.5*letter_thickness),
                                        self.intersect.y - (0.5*letter_thickness)),
                               rg.Point(self.intersect.x + (0.5*letter_thickness),
                                        self.intersect.y + (height-0.5*letter_thickness)))
         # --------------------------------------------------------------
-        # TODO: 3.
+        # DONE: 3.
         #   READ the above specification, including the Example.
         #   Implement this method
         #   Note: you will need to also implement attach_to before testing
@@ -168,9 +172,10 @@ class CapitalT(object):
         Type hints:
           :type window: rg.RoseWindow
         """
-        
+        self.v_rect.attach_to(window)
+        self.h_rect.attach_to(window)
         # --------------------------------------------------------------
-        # TODO: 4.
+        # DONE: 4.
         #   READ the above specification, including the Example.
         #   Implement and test this method by looking at the console and
         #     the graphics window (compare it to simple_t.pdf)
@@ -196,8 +201,12 @@ class CapitalT(object):
           :type fill_color: str
           :type outline_color: str
         """
+        self.h_rect.fill_color = fill_color
+        self.h_rect.outline_color = outline_color
+        self.v_rect.fill_color = fill_color
+        self.v_rect.outline_color = outline_color
         # --------------------------------------------------------------
-        # TODO: 5.
+        # DONE: 5.
         #   READ the above specification, including the Example.
         #   Implement and test this method by uncommenting the appropriate
         #     run_test method in main. Compare the graphics window to
@@ -226,6 +235,14 @@ class CapitalT(object):
           :type dx: int
           :type dy: int
         """
+        self.v_rect.corner_1.x = self.v_rect.corner_1.x + dx
+        self.v_rect.corner_2.x = self.v_rect.corner_2.x + dx
+        self.h_rect.corner_1.x = self.h_rect.corner_1.x + dx
+        self.h_rect.corner_2.x = self.h_rect.corner_2.x + dx
+        self.v_rect.corner_1.y = self.v_rect.corner_1.y + dy
+        self.v_rect.corner_2.y = self.v_rect.corner_2.y + dy
+        self.h_rect.corner_1.y = self.h_rect.corner_1.y + dy
+        self.h_rect.corner_2.y = self.h_rect.corner_2.y + dy
         # --------------------------------------------------------------
         # TODO: 6.
         #   READ the above specification, including the Example.
@@ -254,8 +271,10 @@ class CapitalT(object):
         Type hints:
           :rtype: CapitalT
         """
+        return CapitalT(self.intersect, self.width, self.height,
+                  self.letter_thickness)
         # --------------------------------------------------------------
-        # TODO: 7.
+        # DONE: 7.
         #   READ the above specification, including the Example.
         #   Implement and test this method by uncommenting the appropriate
         #     run_test method in main. Compare the graphics window to
